@@ -1,5 +1,8 @@
 # include <stdio.h>
-/* this is a c program */
+/**
+ * this is a c program
+ * return always 0
+ */
 
 int main(void)
 {
