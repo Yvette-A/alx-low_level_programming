@@ -1,7 +1,7 @@
 # include <stdio.h>
 /**
- * this is a c program
- * return always 0
+ *main = Entry point
+ *Return: Always 0 (Success)
  */
 
 int main(void)
