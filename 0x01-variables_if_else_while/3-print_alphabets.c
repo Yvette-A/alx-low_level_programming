@@ -6,10 +6,9 @@
 #include <ctype.h>
 int main(void)
 {
-	char ch;
+	char ch, dh;
 
 	ch = 'a';
-	char dh;
 
 	dh = 'A';
 	while (ch <= 'z')
