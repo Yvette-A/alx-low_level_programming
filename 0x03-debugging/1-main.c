@@ -10,7 +10,6 @@ int main(void)
 	int i;
 	/* informs us what is about to happen */
 	printf("Infinite loop incoming :(\n");
-	/* initializing i */
 	i = 0;
 	/* this is what is causing the loop */
 	while (i < 10)
@@ -20,5 +19,6 @@ int main(void)
 		printf("Infinite loop avoided! \\o/\n");
 		break;
 	}
+	/* break added */
 	return (0);
 }
