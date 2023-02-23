@@ -14,11 +14,11 @@ int main(void)
 	/* this is what is causing the loop */
 	while (i < 10)
 	{
-		/* put break to end the loop */
-		/* putchar not needed */
-		printf("Infinite loop avoided! \\o/\n");
+		putchar(i);
+		i++;
 		break;
 	}
-	putchar(i);
+		printf("Infinite loop avoided! \\o/\n");
+		/* voided loop with break */
 	return (0);
 }
