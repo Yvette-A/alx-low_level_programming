@@ -20,6 +20,5 @@ int main(void)
 		break;
 	}
 	printf("Infinite loop avoided! \\o/\n");
-	/* voided loop with break */
 	return (0);
 }
