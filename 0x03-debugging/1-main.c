@@ -9,7 +9,7 @@ int main(void)
 {
 	int i;
 	/* this line not supposed to be empty */
-	printf("Infinite loop incoming :(\n");	
+	printf("Infinite loop incoming :(\n");
 	/* not an empty line */
 	/* i = 0; */
 	/* this is what is causing the loop */
