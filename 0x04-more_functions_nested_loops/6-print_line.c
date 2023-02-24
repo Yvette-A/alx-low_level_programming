@@ -9,7 +9,7 @@
 void print_line(int n)
 {
 	int a;
-	
+	/* initializing a */
 	a = 1;
 	while (a <= n)
 	{
