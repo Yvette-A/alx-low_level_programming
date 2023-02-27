@@ -5,15 +5,15 @@
  * @s: string to print in reverse
  * Return: Always 0
  */
-
 void print_rev(char *s)
 {
-	int index, length;
+	int len, index;
 
-	length = 0;
-	while (s[index++])
-		length++;
-	for (index = length - 1; index >= 0; index--)
+	len = 0;
+	index = 0;
+	for(index = 0; s[index]; index++)
+		len++;
+	for ( index = len - 1; index >= 0; index--)
 		_putchar(s[index]);
 	_putchar('\n');
 }
