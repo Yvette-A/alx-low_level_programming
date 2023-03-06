@@ -21,6 +21,6 @@ char *_memcpy(char *dest, char *src, unsigned int n)
 	for (index = 0; index < n && index != 0; index++)
 		*dest = *y;
 	for (index = len; index < n; index++)
-		*dest = '\0';
+		*dest = len - 1;
 	return (dest);
 }
