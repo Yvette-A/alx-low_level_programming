@@ -18,5 +18,5 @@ char *_memset(char *s, char b, unsigned int n)
 	/* to get the number of n bytes */
 	for (index = 0; index < n; index++)
 		*y++ = b;
-	return (y);
+	return (s);
 }
