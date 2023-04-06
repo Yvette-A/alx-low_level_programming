@@ -10,7 +10,7 @@ unsigned int binary_to_uint(const char *b)
 	int mul = 1, length = 1, i;
 	unsigned int num = 0;
 	/*To check if the string is empty */
-	if (b == NULL)
+	if (b[0] == '\0')
 		return (0);
 	/*iterating through the string to find the length */
 	for (length = 1; b[length]; length++)
