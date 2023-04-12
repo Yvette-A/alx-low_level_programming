@@ -13,9 +13,9 @@ int create_file(const char *filename, char *text_content)
 
 	if (filename == NULL)
 		return (-1);
-	for (len = 0; text_content[len];)
-			len++;
 	fd = creat(filename, 0600);
+	for (len = 0; text_content[len];)
+		len++;
 	w = write(fd, text_content, len);
 	if (fd == -1 || w == -1)
 	{
