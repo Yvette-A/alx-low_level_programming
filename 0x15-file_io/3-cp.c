@@ -4,6 +4,8 @@
 #define BUFSIZE 1024
 #define PERMS 0664
 
+void close_file(int f);
+
 /**
  * main - copies file_from to file_to
  * @argc: the count of the arguments passed
@@ -13,7 +15,7 @@
 
 int main(int argc, char **argv)
 {
-	int f1, f2, n, m;
+	int f1, f2, n;
 	char buff[BUFSIZE];
 
 	if (argc != 3)
@@ -34,7 +36,7 @@ int main(int argc, char **argv)
 		exit(99);
 	}
 	while ((n = read(f1, buff, BUFSIZE)) > 0)
-		m = write(f2, buff, n);
+		write(f2, buff, n);
 	close_file(f1);
 	close_file(f2);
 	return (0);
