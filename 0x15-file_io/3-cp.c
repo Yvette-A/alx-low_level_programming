@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "main.h"
 #define BUFSIZE 1024
-#define PERMS 0664
 
 void close_file(int f);
 
@@ -29,7 +28,7 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	f2 = creat(argv[2], PERMS);
+	f2 = creat(argv[2], 0664);
 	if (f2 == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
