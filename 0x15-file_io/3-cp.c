@@ -14,7 +14,7 @@ void close_file(int f);
 
 int main(int argc, char **argv)
 {
-	int f1, f2, n;
+	int f1, f2, n, m;
 	char *buff;
 
 	buff = malloc(sizeof(char) * BUFSIZE);
@@ -36,7 +36,12 @@ int main(int argc, char **argv)
 		exit(99);
 	}
 	while ((n = read(f1, buff, BUFSIZE)) > 0)
-		write(f2, buff, n);
+		m = write(f2, buff, n);
+	if (m != n)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't wrie to file %s\n", argv[2]);
+		exit(99);
+	}
 	free(buff);
 	close_file(f1);
 	close_file(f2);
