@@ -14,10 +14,9 @@ void close_file(int f);
 
 int main(int argc, char **argv)
 {
-	int f1, f2, n, m;
-	char *buff;
+	int f1, f2, n;
+	char buff[BUFSIZE];
 
-	buff = malloc(sizeof(char) * BUFSIZE);
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
@@ -36,8 +35,7 @@ int main(int argc, char **argv)
 		exit(99);
 	}
 	while ((n = read(f1, buff, BUFSIZE)) > 0)
-		m = write(f2, buff, n);
-	free(buff);
+		write(f2, buff, n);
 	close_file(f1);
 	close_file(f2);
 	return (0);
