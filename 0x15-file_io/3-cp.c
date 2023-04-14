@@ -37,11 +37,6 @@ int main(int argc, char **argv)
 	}
 	while ((n = read(f1, buff, BUFSIZE)) > 0)
 		m = write(f2, buff, n);
-	if (m != n)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't wrie to file %s\n", argv[2]);
-		exit(99);
-	}
 	free(buff);
 	close_file(f1);
 	close_file(f2);
