@@ -37,6 +37,7 @@ int main(int argc, char **argv)
 	}
 	while ((n = read(f1, buff, BUFSIZE)) > 0)
 		write(f2, buff, n);
+	free(buff);
 	close_file(f1);
 	close_file(f2);
 	return (0);
