@@ -23,21 +23,25 @@ int main(int argc, char **argv)
 		exit(97);
 	}
 	f2 = creat(argv[2], 0664);
+	close_file(f2);
 	f1 = open(argv[1], O_RDONLY);
 	if (f1 == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	while ((n = read(f1, buff, BUFSIZE)) > 0)
-	{
-		m = write(f2, buff, n);
-		if (f2 == -1 || m == -1)
+	do {
+		f2 = open(argv[2], O_WRONLY | O_APPEND);
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
-			exit(99);
+			n = read(f1, buff, BUFSIZE);
+			m = write(f2, buff, n);
+			if (f2 == -1 || m == -1)
+			{
+				dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
+				exit(99);
+			}
 		}
-	}
+	} while (n > 0);
 	close_file(f1);
 	close_file(f2);
 	return (0);
