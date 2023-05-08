@@ -30,11 +30,13 @@ int main(int argc, char **argv)
 		exit(98);
 	}
 	while ((n = read(f1, buff, BUFSIZE)) > 0)
-		m = write(f2, buff, n);
-	if (f2 == -1 || m == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
-		exit(99);
+		m = write(f2, buff, n);
+		if (f2 == -1 || m == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
+			exit(99);
+		}
 	}
 	close_file(f1);
 	close_file(f2);
