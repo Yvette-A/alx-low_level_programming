@@ -22,26 +22,33 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	f2 = creat(argv[2], 0664);
-	close_file(f2);
 	f1 = open(argv[1], O_RDONLY);
-	if (f1 == -1)
+	if (f1 == -1 || f1 == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	do {
-		f2 = open(argv[2], O_WRONLY | O_APPEND);
+	f2 = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
+	if (f2 == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
+	}
+	while ((n = read(f1, buff, BUFSIZE)) > 0)
+	{
+		m = write(f2, buff, n);
+		if (m != n || m == -1)
 		{
-			n = read(f1, buff, BUFSIZE);
-			m = write(f2, buff, n);
-			if (f2 == -1 || m == -1)
-			{
-				dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
-				exit(99);
-			}
+			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
+			exit(99);
+			break;
 		}
-	} while (n > 0);
+	}
+	if (n == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
 	close_file(f1);
 	close_file(f2);
 	return (0);
